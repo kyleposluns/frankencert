@@ -35,37 +35,37 @@ make
 make INSTALL_PREFIX=$locallib install_sw
 cd ../frankencert/utils/src/opensslconnect/
 # compile openssl client
-gcc connect.c -o connect -l:${locallib}/usr/local/ssl/lib/libssl.a -l:${locallib}/usr/local/ssl/lib/libcrypto.a -ldl
+gcc connect.c -o connect -I:${locallib}/usr/local/ssl/include -L:${locallib}/usr/local/ssl/lib -l:libssl.a -l:libcrypto.a -ldl
 
-cd ../../../../
+# cd ../../../../
 
-sleep 1
+# sleep 1
 
-#Get nettle
+# #Get nettle
 
-wget https://ftp.gnu.org/gnu/nettle/nettle-2.5.tar.gz
-tar zxvf nettle-2.5.tar.gz
-cd nettle-2.5
-./configure --prefix=$locallib --enable-shared
-make
-make install
-cd ../
+# wget https://ftp.gnu.org/gnu/nettle/nettle-2.5.tar.gz
+# tar zxvf nettle-2.5.tar.gz
+# cd nettle-2.5
+# ./configure --prefix=$locallib --enable-shared
+# make
+# make install
+# cd ../
 
-sleep 1
+# sleep 1
 
-# Get gnutls-3.1.9.1.tar.xz
+# # Get gnutls-3.1.9.1.tar.xz
 
-wget https://www.gnupg.org/ftp/gcrypt/gnutls/v3.1/gnutls-3.1.9.1.tar.xz
-tar xvfJ gnutls-3.1.9.1.tar.xz
-cd gnutls-3.1.9
-./configure --with-libnettle-prefix=$locallib -with-libdir=$locallib --prefix=$locallib
+# wget https://www.gnupg.org/ftp/gcrypt/gnutls/v3.1/gnutls-3.1.9.1.tar.xz
+# tar xvfJ gnutls-3.1.9.1.tar.xz
+# cd gnutls-3.1.9
+# ./configure --with-libnettle-prefix=$locallib -with-libdir=$locallib --prefix=$locallib
 
-make
-make install
-cd ../frankencert/utils/src/gnutlsconnect/
-# compile gnutls client
-gcc connect.c -o connect  -I${locallib}/include -L${locallib}/lib/ -lgnutls
+# make
+# make install
+# cd ../frankencert/utils/src/gnutlsconnect/
+# # compile gnutls client
+# gcc connect.c -o connect  -I${locallib}/include -L${locallib}/lib/ -lgnutls
 
-cd ../../../../
-echo "openssl client: ./frankencert/utils/src/opensslconnect/connect"
-echo "gnutls client: ./frankencert/utils/src/gnutlsconnect/connect"
+# cd ../../../../
+# echo "openssl client: ./frankencert/utils/src/opensslconnect/connect"
+# echo "gnutls client: ./frankencert/utils/src/gnutlsconnect/connect"
