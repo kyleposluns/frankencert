@@ -35,7 +35,7 @@ make
 make INSTALL_PREFIX=$locallib install_sw
 cd ../frankencert/utils/src/opensslconnect/
 # compile openssl client
-gcc connect.c -o connect -I:${locallib}/usr/local/ssl/include -L:${locallib}/usr/local/ssl/lib -l:libssl.a -l:libcrypto.a -ldl
+gcc connect.c -o connect -I${locallib}/usr/local/ssl/include -L${locallib}/usr/local/ssl/lib -l:libssl.a -l:libcrypto.a -ldl
 
 # cd ../../../../
 
