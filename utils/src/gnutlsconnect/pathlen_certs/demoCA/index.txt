@@ -1,2 +1,0 @@
-V	150214092817Z		1000	unknown	/C=AU/ST=Some-State/O=Internet Widgits Pty Ltd/CN=My Intermediate CA
-V	150214092825Z		1001	unknown	/C=AU/ST=Some-State/O=Internet Widgits Pty Ltd/CN=www.myserver.com
